@@ -1,4 +1,4 @@
-package org.example;
+package triangles;
 
 import java.util.Arrays;
 
@@ -7,17 +7,8 @@ import java.util.Arrays;
  * upper limit of to search for primes below
  *
  */
-public class Sieve 
+public class Sieve
 {
-    private int upper = 0;
-    private boolean[] primes;
-
-    public Sieve(final int upper) {
-        this.upper = upper;
-        // This will hold a flag for each number, indicating whether or not it
-        // is prime. True indicates prime, false does not
-        boolean primes[] = new boolean[upper + 1];
-    }
 
     /**
      * Finds the primes - use the sieve of Eratosthenes>
@@ -41,21 +32,25 @@ public class Sieve
      *   ```
      * @param upper The upper limit to search below
      */
-    public final int[] findPrimes() {
+    public static final int[] findPrimes(final int upper) {
+        // This will hold a flag for each number, indicating whether or not it
+        // is prime. True indicates prime, false does not
+        boolean primes[] = new boolean[upper + 1];
+
         // Set all flags to true - we are going to assume everything is prime, till we find out 
         // that it isn't. All numbers are going to be either prime or compound (a mutiple of primes)
-        for (int i=0; i<=this.upper; i++) {
-            this.primes[i] = true;
+        for (int i=0; i<=upper; i++) {
+            primes[i] = true;
         }
 
         // Loop through the numbers, starting at 2, upto sqrt(upper)
-        for (int j=2; j*j <= this.upper; j++) {
+        for (int j=2; j*j <= upper; j++) {
             // Find all the mutiples of the current number and mark them as not prime
             // But we can skip any that arent prime, becasue any integer that isn't prime will have
             // prime factors
-            if (this.primes[j] == true) {
-                for (int k=j*j; k<this.upper; k+=j) {
-                    this.primes[k] = false;
+            if (primes[j] == true) {
+                for (int k=j*j; k<upper; k+=j) {
+                    primes[k] = false;
                 }
             }
         }
@@ -63,8 +58,8 @@ public class Sieve
         // Filter out all the false ones..... what we have left are primes
         final int[] foundU = new int[upper + 1];
         int cnt = 0;
-        for (int i=2; i<this.upper; i++) {
-            if (this.primes[i] == true){
+        for (int i=2; i<upper; i++) {
+            if (primes[i] == true){
                 foundU[cnt] = i;
                 cnt++;
             }
@@ -91,9 +86,7 @@ public class Sieve
         final long startTime = System.nanoTime();
 
         boolean display = args.length >= 2 ? Boolean.parseBoolean(args[1]) : false;
-        //
-        final Sieve sieve = new Sieve(Integer.parseInt(args[0]));
-        int[] primes = sieve.findPrimes();
+        int[] primes = findPrimes(Integer.parseInt(args[0]));
         int last = primes[primes.length - 1];
         // 
         if (display) {

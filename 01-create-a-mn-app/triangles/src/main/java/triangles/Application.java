@@ -1,4 +1,4 @@
-package org.example;
+package triangles;
 
 import io.micronaut.runtime.Micronaut;
 

@@ -1,27 +1,20 @@
-package org.example;
+package triangles;
 
-/**
- * Builds an ASCII Sierpinski triangle.
- * 
- * Code Taken from : https://rosettacode.org/wiki/Sierpinski_triangle#Java
- * LIcense of Original Code : https://www.gnu.org/licenses/old-licenses/fdl-1.2.html
- */
 public class SierpinskiTriangle {
- 
+
     public static void main(String[] args) {
-        int order = args.length >= 1 ? Integer.parseInt(args[0]) : 4;
-        System.out.println(getSierpinskiTriangle(order));
+        System.out.println(getSierpinskiTriangle(4));
     }
- 
-    private static final String getSierpinskiTriangle(int n) {
+
+    public static final String getSierpinskiTriangle(int n) {
         if ( n == 0 ) {
             return "*";
         }
- 
+
         String s = getSierpinskiTriangle(n-1);
         String [] split = s.split("\n");
         int length = split.length;
- 
+
         //  Top triangle
         StringBuilder sb = new StringBuilder();
         String top = buildSpace((int)Math.pow(2, n-1));
@@ -30,7 +23,7 @@ public class SierpinskiTriangle {
             sb.append(split[i]);
             sb.append("\n");
         }
- 
+
         //  Two triangles side by side
         for ( int i = 0 ; i < length ;i++ ) {
             sb.append(split[i]);
@@ -40,7 +33,7 @@ public class SierpinskiTriangle {
         }
         return sb.toString();
     }
- 
+
     private static String buildSpace(int n) {
         StringBuilder sb = new StringBuilder();
         while ( n > 0 ) {
@@ -49,5 +42,5 @@ public class SierpinskiTriangle {
         }
         return sb.toString();
     }
- 
+
 }

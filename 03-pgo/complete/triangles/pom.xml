@@ -91,7 +91,7 @@
 
   <profiles>
     <profile>
-      <id>native</id>
+      <id>instrument</id>
       <build>
         <plugins>
           <plugin>
@@ -114,6 +114,36 @@
               <buildArgs>
                 <buildArg>--gc=G1</buildArg>
                 <buildArg>--pgo-instrument</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+      <profile>
+      <id>native-optimised</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>${native.maven.plugin.version}</version>
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <id>build-native</id>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <imageName>barry</imageName>
+              <mainClass>triangles.Application</mainClass>
+              <buildArgs>
+                <buildArg>--gc=G1</buildArg>
+                <buildArg>--pgo=/home/opc/repos/micronaut-and-ni/03-pgo/complete/triangles/default.iprof</buildArg>
               </buildArgs>
             </configuration>
           </plugin>

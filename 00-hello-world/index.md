@@ -10,26 +10,26 @@ Let's get started.
 
 ## Check we Have Native Image Installed
 
-We should, thanks to the installation instructions at the root of the repo, should have both GraalVM Enterprise Edition Java 17 and the corresponding Native Image installed.
+We should, thanks to the installation instructions at the root of the repo, should have both GraalVM Enterprise Edition Java 11 and the corresponding Native Image installed.
 
 Let's Check:
 
 ```sh
 $ java -version
-java version "17.0.1" 2021-10-19 LTS
-Java(TM) SE Runtime Environment GraalVM EE 21.3.0 (build 17.0.1+12-LTS-jvmci-21.3-b05)
-Java HotSpot(TM) 64-Bit Server VM GraalVM EE 21.3.0 (build 17.0.1+12-LTS-jvmci-21.3-b05, mixed mode, sharing)
+java version "11.0.13" 2021-10-19 LTS
+Java(TM) SE Runtime Environment GraalVM EE 21.3.0 (build 11.0.13+10-LTS-jvmci-21.3-b05)
+Java HotSpot(TM) 64-Bit Server VM GraalVM EE 21.3.0 (build 11.0.13+10-LTS-jvmci-21.3-b05, mixed mode, sharing)
 ```
 
-You should see the above. The exact version numbers may change if you are using a slighly more recent version of GraalVM Enterprise Edition Java. Most importantly we can see that we are using, `java version "17.0.1"`, and GraalVM Enterprise Edition, `GraalVM EE`.
+You should see the above. The exact version numbers may change if you are using a slighly more recent version of GraalVM Enterprise Edition Java. Most importantly we can see that we are using, `java version "11.0.13"`, and GraalVM Enterprise Edition, `GraalVM EE`.
 
 Now we need to check that Native Image is available.
 
 ```sh
 $ native-image --version
-GraalVM 21.3.0 Java 17 EE (Java Version 17.0.1+12-LTS-jvmci-21.3-b05)
+GraalVM 21.3.0 Java 11 EE (Java Version 11.0.13+10-LTS-jvmci-21.3-b05)
 ```
-Again the exact version may differ, but you should see that you are using Native Image Java Version 17 Enterprise Edition, `Java 17 EE`.
+Again the exact version may differ, but you should see that you are using Native Image Java Version 11 Enterprise Edition, `Java 11 EE`.
 
 ## Create a `HelloWorld` Application
 

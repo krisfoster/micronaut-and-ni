@@ -113,7 +113,6 @@
               <mainClass>triangles.Application</mainClass>
               <buildArgs>
                 <buildArg>--gc=G1</buildArg>
-                <buildArg>--pgo-instrument</buildArg>
               </buildArgs>
             </configuration>
           </plugin>

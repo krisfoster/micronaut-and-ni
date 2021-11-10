@@ -22,7 +22,7 @@ here isn't important.
 Micronaut comes with a command line tool for creating and updating your applications, `mn`. We are going to use this to create out application:
 
 ```sh
-$ mn create-app --features=graalvm,micrometer-prometheus --build=maven --lang=java triangles
+$ mn create-app --features=graalvm --build=maven --lang=java triangles
 ```
 
 This creates a new directory containing our empty Micronaut application:
@@ -56,8 +56,26 @@ triangles
 What did we just do? Let's take a quick look at the command line we ran:
 
 * `mn create-app` : the command to the `mn` command line application to create an empty application
-* `--features=graalvm,micrometer-prometheus` : This let's Micronaut that we will be wating to make use of the Natice Image integration & that we want to observe the application endpoints using Prometheus
+* `--features=graalvm` : This let's Micronaut that we will be wating to make use of the Native Image integration
 * `--build=maven` : We are going to use Maven as our build tool
 * `--lang=java` : Java will be the progrmming language. This is the default, but we could also specify that we want to use Groovy or Kotlin
 
 ## Adding a Web End-Point
+
+Let's add an endpoint:
+
+```java
+package triangles;
+
+import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.*;
+import static triangles.SierpinskiTriangle.getSierpinskiTriangle;
+
+@Controller("/")
+public class RequestController {
+
+    @Get(uri="/ping", produces=MediaType.TEXT_PLAIN)
+    public String ping() {
+        return "pong";
+    }
+}```

@@ -1,3 +1,7 @@
 micronaut:
   application:
     name: ping
+  server:
+    jetty:
+      idle-timeout: 360000
+

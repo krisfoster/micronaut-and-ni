@@ -1,18 +1,25 @@
 {
     "configurations": [
-    {
-        "type": "java8+",
-        "request": "launch",
-        "name": "Launch Native Image Agent & Java 8+ Application",
-        "mainClass": "${file}",
-        "vmArgs": "${command:extension.graalvm.attachNativeImageAgent}"
-    },
-    {
-        "type": "java8+",
-        "request": "launch",
-        "name": "Launch VisualVM & Java 8+ Application",
-        "mainClass": "${file}",
-        "vmArgs": "${command:extension.graalvm.defineDisplayName} ${command:extension.graalvm.attachVisualVM}"
-    }
+        {
+            "type": "nativeimage",
+            "request": "attach",
+            "name": "Attach to Native Image KRF",
+            "processId": "${command:nativeImage.attachDebugger.pickProcess}",
+            "nativeImagePath": "${workspaceFolder}/target/barry"
+        },
+        {
+            "type": "nativeimage",
+            "request": "launch",
+            "name": "Launch Native Image KRF",
+            "nativeImagePath": "${workspaceFolder}/target/barry",
+            "miDebugger": "gdb"
+        },
+        {
+            "type": "java8+",
+            "request": "launch",
+            "name": "Launch Native Image Agent & Java 8+ Application",
+            "mainClass": "${file}",
+            "vmArgs": "${command:extension.graalvm.attachNativeImageAgent}"
+        }
     ]
 }

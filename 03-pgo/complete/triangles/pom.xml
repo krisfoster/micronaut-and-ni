@@ -111,6 +111,10 @@
               <buildArgs>
                 <!-- With Enterprise you can use the G1GC -->
                 <buildArg>--gc=G1</buildArg>
+                <!-- Debug Info -->
+                <buildArg>-H:GenerateDebugInfo=1</buildArg>
+                <buildArg>-H:Debug=2</buildArg>
+                <buildArg>-H:Optimize=0</buildArg>
               </buildArgs>
             </configuration>
           </plugin>

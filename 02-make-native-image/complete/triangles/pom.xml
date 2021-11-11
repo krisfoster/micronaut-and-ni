@@ -20,7 +20,7 @@
     <release.version>11</release.version>
     <micronaut.version>3.1.1</micronaut.version>
     <exec.mainClass>triangles.Application</exec.mainClass>
-    <micronaut.runtime>netty</micronaut.runtime>
+    <micronaut.runtime>jetty</micronaut.runtime>
     <native.maven.plugin.version>0.9.7.1</native.maven.plugin.version>
   </properties>
 
@@ -64,17 +64,12 @@
     </dependency>
     <dependency>
       <groupId>io.micronaut</groupId>
-      <artifactId>micronaut-http-server-netty</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.micronaut</groupId>
-      <artifactId>micronaut-management</artifactId>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.micronaut</groupId>
       <artifactId>micronaut-runtime</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.micronaut.servlet</groupId>
+      <artifactId>micronaut-http-server-jetty</artifactId>
       <scope>compile</scope>
     </dependency>
     <dependency>

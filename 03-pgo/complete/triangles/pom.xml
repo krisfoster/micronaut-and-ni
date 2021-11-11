@@ -21,6 +21,7 @@
     <micronaut.version>3.1.1</micronaut.version>
     <exec.mainClass>triangles.Application</exec.mainClass>
     <micronaut.runtime>jetty</micronaut.runtime>
+    <!-- Define the version of the GraalVM Maven Plugin we want to use -->
     <native.maven.plugin.version>0.9.7.1</native.maven.plugin.version>
   </properties>
 
@@ -85,6 +86,38 @@
   </dependencies>
 
   <profiles>
+    <!-- Builds a native image of the application -->
+    <profile>
+      <id>native</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>${native.maven.plugin.version}</version>
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <id>build-native</id>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <imageName>barry</imageName>
+              <mainClass>triangles.Application</mainClass>
+              <buildArgs>
+                <!-- With Enterprise you can use the G1GC -->
+                <buildArg>--gc=G1</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <!-- Instruments a native image so that it records profiling data -->
     <profile>
       <id>instrument</id>
       <build>
@@ -115,7 +148,8 @@
         </plugins>
       </build>
     </profile>
-      <profile>
+    <!-- Uses profiling data to build an optimised native image -->
+    <profile>
       <id>native-optimised</id>
       <build>
         <plugins>
@@ -138,7 +172,7 @@
               <mainClass>triangles.Application</mainClass>
               <buildArgs>
                 <buildArg>--gc=G1</buildArg>
-                <buildArg>--pgo=/home/opc/repos/micronaut-and-ni/03-pgo/complete/triangles/default.iprof</buildArg>
+                <buildArg>--pgo=${project.basedir}/default.iprof</buildArg>
               </buildArgs>
             </configuration>
           </plugin>

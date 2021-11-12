@@ -1,5 +1,12 @@
 {
     "configurations": [
+    {
+        "type": "nativeimage",
+        "request": "launch",
+        "name": "Launch Triang",
+        "nativeImagePath": "${workspaceFolder}/target/triang",
+        "miDebugger": "gdb"
+    },
         {
             "type": "nativeimage",
             "request": "attach",

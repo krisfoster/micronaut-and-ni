@@ -2,31 +2,10 @@
     "configurations": [
     {
         "type": "nativeimage",
-        "request": "launch",
+        "request": "launch-native",
         "name": "Launch Triang",
-        "nativeImagePath": "${workspaceFolder}/target/triang",
+        "nativeImagePath": "${workspaceFolder}/target/barry01",
         "miDebugger": "gdb"
-    },
-        {
-            "type": "nativeimage",
-            "request": "attach",
-            "name": "Attach to Native Image KRF",
-            "processId": "${command:nativeImage.attachDebugger.pickProcess}",
-            "nativeImagePath": "${workspaceFolder}/target/barry"
-        },
-        {
-            "type": "nativeimage",
-            "request": "launch",
-            "name": "Launch Native Image KRF",
-            "nativeImagePath": "${workspaceFolder}/target/barry",
-            "miDebugger": "gdb"
-        },
-        {
-            "type": "java8+",
-            "request": "launch",
-            "name": "Launch Native Image Agent & Java 8+ Application",
-            "mainClass": "${file}",
-            "vmArgs": "${command:extension.graalvm.attachNativeImageAgent}"
-        }
+    }
     ]
 }

@@ -20,9 +20,12 @@
     <release.version>11</release.version>
     <micronaut.version>3.1.1</micronaut.version>
     <exec.mainClass>triangles.Application</exec.mainClass>
+    <junit.jupiter.version>5.8.1</junit.jupiter.version>
     <micronaut.runtime>jetty</micronaut.runtime>
     <!-- Define the version of the GraalVM Maven Plugin we want to use -->
     <native.maven.plugin.version>0.9.7.1</native.maven.plugin.version>
+    <!-- We can use properties to define the name of the executable we produce -->
+    <image.name>barry01</image.name>
   </properties>
 
   <repositories>
@@ -107,14 +110,13 @@
               </execution>
             </executions>
             <configuration>
-              <imageName>barry</imageName>
+              <imageName>${image.name}</imageName>
               <mainClass>triangles.Application</mainClass>
               <buildArgs>
                 <!-- With Enterprise you can use the G1GC -->
                 <!--buildArg>- -gc=G1</buildArg-->
                 <!-- Debug Info -->
-                <!--buildArg>-H:GenerateDebugInfo=1</buildArg>
-                <buildArg>-H:Debug=2</buildArg>
+                <!--buildArg>-H:GenerateDebugInfo=10</buildArg>
                 <buildArg>-H:Optimize=0</buildArg-->
               </buildArgs>
             </configuration>

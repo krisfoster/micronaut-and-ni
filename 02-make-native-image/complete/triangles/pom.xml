@@ -107,7 +107,7 @@
               <imageName>barry</imageName>
               <mainClass>triangles.Application</mainClass>
               <buildArgs>
-                <buildArg>--gc=G1</buildArg>
+                <!--buildArg>- -gc=G1</buildArg-->
               </buildArgs>
             </configuration>
           </plugin>

@@ -2,7 +2,7 @@
     "configurations": [
     {
         "type": "nativeimage",
-        "request": "launch-native",
+        "request": "launch",
         "name": "Launch Triang",
         "nativeImagePath": "${workspaceFolder}/target/barry01",
         "miDebugger": "gdb"

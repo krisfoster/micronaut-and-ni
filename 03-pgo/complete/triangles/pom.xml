@@ -144,7 +144,7 @@
               </execution>
             </executions>
             <configuration>
-              <imageName>barry</imageName>
+              <imageName>barry-inst</imageName>
               <mainClass>triangles.Application</mainClass>
               <buildArgs>
                 <buildArg>--gc=G1</buildArg>
@@ -175,7 +175,7 @@
               </execution>
             </executions>
             <configuration>
-              <imageName>barry</imageName>
+              <imageName>barry-opt</imageName>
               <mainClass>triangles.Application</mainClass>
               <buildArgs>
                 <buildArg>--gc=G1</buildArg>
